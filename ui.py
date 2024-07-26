@@ -71,7 +71,6 @@ def main(page: ft.Page):
             max_y=max(wallet['Сумма']),
             min_x=0,
             max_x=wallet.shape[0],
-            animate=5000,
             expand=True,
         )
 
