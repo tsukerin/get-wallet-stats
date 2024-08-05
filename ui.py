@@ -1,5 +1,5 @@
 import flet as ft
-from utils import get_jettons, get_wallet_info, get_ton_balance, get_balance
+from handlers.utils import get_jettons, get_wallet_info, get_ton_balance, get_balance
 import pandas as pd
 
 def main(page: ft.Page):
@@ -15,6 +15,10 @@ def main(page: ft.Page):
 
     input_field = ft.TextField(width=300, height=60)
     response = ft.Text(font_family='Roboto Mono', size=24)
+
+    def cache_wallet(wallet):
+        with open('cache', mode='w') as cache:
+            cache.write(wallet)
 
     def create_graph():
         wallet = pd.read_excel('crypto_wallet.xlsx')
@@ -140,6 +144,7 @@ def main(page: ft.Page):
             ft.NavigationBarDestination(icon=ft.icons.BAR_CHART_ROUNDED, selected_icon=ft.icons.BAR_CHART_OUTLINED)
         )
 
+        cache_wallet(wallet)
         page.update()
 
     auth_page = ft.Row([
@@ -153,7 +158,7 @@ def main(page: ft.Page):
     page.navigation_bar = ft.NavigationBar(
         destinations=[
             ft.NavigationBarDestination(icon=ft.icons.HOME, selected_icon=ft.icons.HOME_OUTLINED),
-        ], on_change=navigate, height=80
+        ], on_change=navigate
     )
 
     page.add(auth_page)

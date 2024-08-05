@@ -1,4 +1,9 @@
+# Editor directories and files
 tmp.py
-__pycache__
 ptype
 .venv
+
+# Cache and logs
+__pycache__
+logs
+cache
