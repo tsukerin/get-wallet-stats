@@ -1,5 +1,6 @@
 import flet as ft
-from handlers.utils import get_jettons, get_wallet_info, get_ton_balance, get_balance
+from handlers.utils import *
+from db.db_utils import insert_wallet
 import pandas as pd
 
 def main(page: ft.Page):
@@ -144,7 +145,7 @@ def main(page: ft.Page):
             ft.NavigationBarDestination(icon=ft.icons.BAR_CHART_ROUNDED, selected_icon=ft.icons.BAR_CHART_OUTLINED)
         )
 
-        cache_wallet(wallet)
+        insert_wallet(wallet)
         page.update()
 
     auth_page = ft.Row([
