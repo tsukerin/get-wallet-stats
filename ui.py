@@ -164,4 +164,4 @@ def main(page: ft.Page):
 
     page.add(auth_page)
 
-ft.app(target=main, view=ft.AppView.FLET_APP)
+ft.app(target=main, view=ft.AppView.WEB_BROWSER, port=80)
